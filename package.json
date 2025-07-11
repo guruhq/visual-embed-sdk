@@ -1,10 +1,10 @@
 {
-    "name": "@thoughtspot/visual-embed-sdk",
+    "name": "@guruhq/visual-embed-sdk",
     "version": "1.35.4",
-    "description": "ThoughtSpot Embed SDK",
+    "description": "Guru HQ fork of ThoughtSpot Embed SDK",
     "module": "lib/src/index.js",
     "main": "dist/tsembed.js",
-    "types": "lib/src/index.d.ts",
+    "types": "dist/src/index.d.ts",
     "files": [
         "dist/**",
         "lib/**",
@@ -13,9 +13,9 @@
     ],
     "exports": {
         ".": {
-            "import": "./lib/src/index.js",
-            "require": "./cjs/src/index.js",
-            "types": "./lib/src/index.d.ts"
+            "import": "./dist/tsembed.es.js",
+            "require": "./dist/tsembed.js",
+            "types": "./dist/src/index.d.ts"
         },
         "./react": {
             "import": "./lib/src/react/all-types-export.js",
@@ -56,7 +56,6 @@
         "test-sdk": "jest -c jest.config.sdk.js --runInBand",
         "test": "npm run test-sdk",
         "posttest": "cat ./coverage/sdk/lcov.info | coveralls",
-        "postinstall": "npm run build",
         "is-publish-allowed": "node scripts/is-publish-allowed.js",
         "prepublishOnly": "npm run is-publish-allowed && npm run test && npm run tsc && npm run bundle-dts-file && npm run bundle-dts && npm run bundle-dts-react && npm run bundle-dts-react-full && npm run build",
         "check-size": "npm run build && size-limit",
